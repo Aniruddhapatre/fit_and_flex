@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Users List</h1>
+    <button id="fetch-users-btn">Fetch Users</button>
+    
+    <table id="users-table" style="display: none;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>WhatsApp</th>
+            </tr>
+        </thead>
+        <tbody id="users-table-body">
+            <!-- Fetched users will be inserted here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('fetch-users-btn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:5000/users');
+                const users = await response.json();
+
+                const tableBody = document.getElementById('users-table-body');
+                tableBody.innerHTML = ''; // Clear previous data
+
+                if (users.length > 0) {
+                    users.forEach(user => {
+                        const row = `
+                            <tr>
+                                <td>${user.name}</td>
+                                <td>${user.email}</td>
+                                <td>${user.whatsapp}</td>
+                            </tr>
+                        `;
+                        tableBody.insertAdjacentHTML('beforeend', row);
+                    });
+                    document.getElementById('users-table').style.display = 'table';
+                } else {
+                    alert('No users found.');
+                }
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                alert('Failed to fetch users.');
+            }
+        });
+    </script>
+
+</body>
+</html>

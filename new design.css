@@ -1,0 +1,324 @@
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap');
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    scroll-behavior: smooth;
+}
+
+header {
+    background-color: #050202;
+    padding: 10px 30px;
+    z-index: 10;
+    position: relative;
+    
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+
+.logo {
+    max-height: 200px;
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+    animation: fadeIn 2s ease-in-out;
+    /* Logo animation */
+}
+
+.head {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    gap: 40px;
+    z-index: 5;
+}
+
+
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.head li {
+    animation: slideInDown 1s ease-out forwards;
+    opacity: 0;
+    position: relative;
+}
+
+
+.head li:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.head li:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.head li:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.head li:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+
+
+.head li a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.head li a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.hero {
+    background-image: url('photos/gymgirl3.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hero-text {
+    color: aliceblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 200px;
+    text-align: center;
+    text-shadow: -32px -59px 0 #3d3131, -12px -15px 0 #000, 1px -1px 0 #b78c8c, -1px 1px 0 #000;
+    position: absolute;
+    animation: zoomIn 1.5s ease-out;
+    /* Hero text animation */
+}
+
+.register {
+    text-align: center;
+    padding-top: 90px;
+    background-color: rgb(22, 21, 21);
+    color: white;
+    font-size: 50px;
+    padding-bottom: 30px;
+}
+
+.register pre {
+    font-family: "Oswald", sans-serif;
+}
+
+.enroll input {
+    border-radius: 5px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Button Hover Effect */
+.enroll input:hover {
+    background-color: rgb(105, 98, 98);
+}
+
+.enroll #btn1 {
+    font-family: "Oswald", sans-serif;
+    margin-top: 50px;
+    font-size: 30px;
+    color: white;
+    padding: 10px 20px;
+    background-color: rgb(172, 59, 18);
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.enroll #btn1:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .head {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .hero-text {
+        font-size: 100px;
+    }
+
+    .register {
+        font-size: 25px;
+        padding-top: 50px;
+    }
+
+    .enroll input,
+    .enroll button {
+        font-size: 20px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+}
+
+
+
+
+
+.menu-toggle {
+    display: none;
+    /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.head {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 40px;
+}
+
+
+
+@media (max-width: 768px) {
+    .head {
+        display: none;
+        /* Hide menu items by default */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        /* Position below the button */
+        right: 20px;
+        /* Align with the button */
+        background-color: #050202;
+        width: 200px;
+        /* Adjust width as needed */
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-height: 0;
+        /* Initially hidden */
+        overflow: hidden;
+        /* Hide overflow */
+        transition: max-height 0.3s ease;
+        /* Smooth transition */
+        z-index: 20;
+        /* Ensure the dropdown is on top */
+    }
+
+    .head.active {
+        display: flex;
+        /* Show menu items when active */
+        max-height: 500px;
+        /* Adjust based on content size */
+    }
+
+    .menu-toggle {
+        display: block;
+        /* Show toggle button on small screens */
+    }
+}
+
+.trainer h2 {
+    color: rgb(241, 117, 59);
+    text-align: center; 
+    margin: 40px 10px;
+    font-size: 50px; 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.trainertwo pre{
+    font-size: 24px;
+    text-align: center; /* Center-align the text */
+    margin-top: 15px; /* Add some margin between the image and description */
+    padding: 0 15px; /* Add padding to the sides for spacing */
+    font-weight: 300;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.trainertwo{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    display: flex;
+
+}
+
+.trainertwo img{
+
+border-radius: 8px;
+}
+
+
+ #first{
+    color: red;
+    
+}
+#second{
+    color: green;
+}
+.maintrainer{
+    padding-bottom: 25px;
+}
